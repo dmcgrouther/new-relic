@@ -12,6 +12,8 @@ const mostCommonThreeWords = (route) => {
   
   let threeWordHash = {};
 
+  let arrayToReturn = [];
+
   lineReader.eachLine(route, function(line) {
     // console.log(line);
     countOfLines = countOfLines + 1;
@@ -51,7 +53,7 @@ const mostCommonThreeWords = (route) => {
             threeWordHash[newString] = 1;
           }
         }
-        console.log(threeWordHash)
+        // console.log(threeWordHash)
         let sortable = [];
         for (let string in threeWordHash) {
           sortable.push([string, threeWordHash[string]]);
@@ -60,13 +62,26 @@ const mostCommonThreeWords = (route) => {
         sortable.sort(function(a, b) {
             return b[1] - a[1];
         });
-        console.log(sortable)
+        // console.log(sortable)
+        let stringToReturn = '';
+        for(threeWordString in threeWordHash){
+          stringToReturn = `${threeWordString} - ${threeWordHash[threeWordString]}`;
+          // console.log(stringToReturn);
+          arrayToReturn.push(stringToReturn);
+          if(arrayToReturn.length === 100){
+            return arrayToReturn;
+          }
+        }
+        console.log(arrayToReturn)
+        return arrayToReturn;
       }
     });
   }, delayInMilliseconds);
 };
 
 mostCommonThreeWords('./morestuff.txt');
+
+// console.log(mostCommonThreeWords('./morestuff.txt'))
 
 // mostCommonThreeWords('./stuff.txt');
 // mostCommonThreeWords('./morestuff.txt');
