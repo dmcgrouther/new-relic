@@ -4,6 +4,27 @@ const readline = require('readline');
 const fs = require('fs');
 const lineReader = require('line-reader');
 
+// let endingPuctiationMarks = ['.', ',', '!', ';', ':'];
+// let punctuationMarksNotAtEnd = ["'", '"'];
+let punctuationMarks = ['.', ',', '!', ';', ':', "'", '"', '(', ')', '{', '}', '[', ']'];
+
+const checkForAndRemovePunctuation = (sampleString) => {
+  let sampleStringToArray =  sampleString.split('');
+  for(let i = 0; i < sampleStringToArray.length-1; i++){
+    if(punctuationMarks.includes(sampleStringToArray[i])){
+      // console.log(`i is ${i} sampleStringToArray[i] is ${sampleStringToArray[i]}`)
+      sampleStringToArray.splice(i,1)
+      i = -1
+    }
+  }
+  if(punctuationMarks.includes(sampleStringToArray[sampleStringToArray.length-1])){
+    sampleStringToArray.pop()
+  }
+  sampleString = sampleStringToArray.join('')
+  // console.log(sampleString)
+  return sampleString
+}
+
 const mostCommonThreeWords = (route) => {
 
   let newArr = [];
@@ -29,7 +50,13 @@ const mostCommonThreeWords = (route) => {
       // console.log(count);
       let splitLine = line.split(' ');
       for(let i = 0; i < splitLine.length; i++){
-        newArr.push(splitLine[i]);
+        // newArr.push(splitLine[i]);
+
+        let wordCheckedForPunctuation = checkForAndRemovePunctuation(splitLine[i]);
+        newArr.push(wordCheckedForPunctuation);
+        // console.log(wordCheckedForPunctuation);
+        // newArr.push(wordCheckedForPunctuation);
+        // console.group(newArr)
       }
       if(count === countOfLines){
         for (let j = 0; j < newArr.length-2; j++){
@@ -80,10 +107,11 @@ const mostCommonThreeWords = (route) => {
   }, delayInMilliseconds);
 };
 
-mostCommonThreeWords('./morestuff.txt');
+// mostCommonThreeWords('./morestuff.txt');
+
 
 // console.log(mostCommonThreeWords('./morestuff.txt'))
 
 // mostCommonThreeWords('./stuff.txt');
-// mostCommonThreeWords('./morestuff.txt');
+mostCommonThreeWords('./morestuff.txt');
 // mostCommonThreeWords('./threes.txt');
