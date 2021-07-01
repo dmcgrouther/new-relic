@@ -9,6 +9,7 @@ end of line /n
 more arguments/files
 test file if possible.
 how to run program
+see if you can console.log the return. like this console.log(mostCommonThreeWords('./morestuff.txt'))
 
 more time
 perhaps try a different language and library

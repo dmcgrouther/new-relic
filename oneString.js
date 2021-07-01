@@ -64,8 +64,9 @@ const mostCommonThreeWords = (route) => {
         });
         // console.log(sortable)
         let stringToReturn = '';
-        for(threeWordString in threeWordHash){
-          stringToReturn = `${threeWordString} - ${threeWordHash[threeWordString]}`;
+
+        for(let k = 0; k < sortable.length; k++){
+          stringToReturn = `${sortable[k][1]} - ${sortable[k][0]}`;
           // console.log(stringToReturn);
           arrayToReturn.push(stringToReturn);
           if(arrayToReturn.length === 100){
