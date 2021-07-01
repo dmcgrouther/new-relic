@@ -3,8 +3,6 @@ returning an array of strings is acceptable
 
 
 todo
-lower and upper case
-punctuation 
 end of line /n
 more arguments/files
 test file if possible.

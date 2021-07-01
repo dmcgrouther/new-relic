@@ -38,9 +38,9 @@ const mostCommonThreeWords = (route) => {
           let countWords = 0;
           while(countWords < 3){
             if(countWords === 0){
-              newString = newArr[j];
+              newString = newArr[j].toLowerCase();
             } else {
-              newString = newString + ' ' + newArr[j+countWords];
+              newString = newString + ' ' + newArr[j+countWords].toLowerCase();
               // console.log(newString);
             }
             countWords++;
