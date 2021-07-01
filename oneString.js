@@ -24,14 +24,14 @@ const mostCommonThreeWords = (route) => {
     //your code to be executed after 1 second
     lineReader.eachLine(route, function(line) {
       count++;
-      console.log(count);
+      // console.log(count);
       let splitLine = line.split(' ');
       for(let i = 0; i < splitLine.length; i++){
         newArr.push(splitLine[i]);
       }
       if(count === countOfLines){
         for (let j = 0; j < newArr.length-2; j++){
-          console.log(`newArr[j] is ${newArr[j]}`);
+          // console.log(`newArr[j] is ${newArr[j]}`);
           let newString = '';
           let countWords = 0;
           while(countWords < 3){
@@ -44,8 +44,23 @@ const mostCommonThreeWords = (route) => {
             countWords++;
             // console.log(newString)
           }
-          console.log(newString)
+          // console.log(newString)
+          if(threeWordHash.hasOwnProperty(newString)){
+            threeWordHash[newString] = threeWordHash[newString] + 1;
+          } else {
+            threeWordHash[newString] = 1;
+          }
         }
+        console.log(threeWordHash)
+        let sortable = [];
+        for (let string in threeWordHash) {
+          sortable.push([string, threeWordHash[string]]);
+        }
+        
+        sortable.sort(function(a, b) {
+            return b[1] - a[1];
+        });
+        console.log(sortable)
       }
     });
   }, delayInMilliseconds);
