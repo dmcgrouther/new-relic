@@ -4,6 +4,8 @@ const readline = require('readline');
 const fs = require('fs');
 const lineReader = require('line-reader');
 
+// let endingPuctiationMarks = ['.', ',', '!', ';', ':'];
+// let punctuationMarksNotAtEnd = ["'", '"'];
 let punctuationMarks = ['.', ',', '!', ';', ':', "'", '"', '(', ')', '{', '}', '[', ']'];
 
 const checkForAndRemovePunctuation = (sampleString) => {
@@ -34,23 +36,27 @@ const mostCommonThreeWords = (route) => {
   let arrayToReturn = [];
 
   lineReader.eachLine(route, function(line) {
+    // console.log(line);
     countOfLines = countOfLines + 1;
+    // console.log(countOfLines)
   })
 
   var delayInMilliseconds = 1000; //1 second
 
-  setTimeout(function() { //your code to be executed after 1 second
+  setTimeout(function() {
+    //your code to be executed after 1 second
     lineReader.eachLine(route, function(line) {
       count++;
+      // console.log(count);
       let splitLine = line.split(' ');
       for(let i = 0; i < splitLine.length; i++){
+        // newArr.push(splitLine[i]);
 
         let wordCheckedForPunctuation = checkForAndRemovePunctuation(splitLine[i]);
-        // console.log(wordCheckedForPunctuation);
-        // wordCheckedForPunctuation = wordCheckedForPunctuation.replace('\n', ''); //TODO get this to work
-        // console.log(wordCheckedForPunctuation);
-
         newArr.push(wordCheckedForPunctuation);
+        // console.log(wordCheckedForPunctuation);
+        // newArr.push(wordCheckedForPunctuation);
+        // console.group(newArr)
       }
       if(count === countOfLines){
         for (let j = 0; j < newArr.length-2; j++){
@@ -102,53 +108,10 @@ const mostCommonThreeWords = (route) => {
 };
 
 // mostCommonThreeWords('./morestuff.txt');
+
+
+// console.log(mostCommonThreeWords('./morestuff.txt'))
+
 // mostCommonThreeWords('./stuff.txt');
-mostCommonThreeWords('./morestuff3.txt');
+mostCommonThreeWords('./morestuff.txt');
 // mostCommonThreeWords('./threes.txt');
-
-
-
-
-
-
-
-//below line 78
-// // check for endline /n
-        // if (wordCheckedForPunctuation === '\n') {
-        //   continue;
-        // } else if(wordCheckedForPunctuation.includes('\n')){
-        //   // console.log(`wordCheckedForPunctuation is ${wordCheckedForPunctuation}`)
-        //   // //below
-        //   let startOfEndLineIndex = wordCheckedForPunctuation.indexOf('\n')
-        //   if(startOfEndLineIndex === wordCheckedForPunctuation.length-2){
-        //     console.log('remove the \n at the end');
-        //     wordCheckedForPunctuation = wordCheckedForPunctuation.split('');
-        //     wordCheckedForPunctuation.splice(startOfEndLineIndex,2);
-        //     wordCheckedForPunctuation = wordCheckedForPunctuation.join('');
-        //     console.log(wordCheckedForPunctuation);
-        //     newArr.push(wordCheckedForPunctuation);
-        //   } else {
-        //     console.log('somewhere in the middle');
-        //     wordCheckedForPunctuation = wordCheckedForPunctuation.split('');
-        //     wordCheckedForPunctuation[startOfEndLineIndex] = ' ';
-        //     wordCheckedForPunctuation.splice(startOfEndLineIndex+1,1)
-        //     wordCheckedForPunctuation.join('');
-        //     wordCheckedForPunctuation.split(' ');
-        //     newArr.push(wordCheckedForPunctuation[0])
-        //     newArr.push(wordCheckedForPunctuation[1])
-        //   }
-        //   // console.log(startOfEndLineIndex)
-        //   // newArr.push(wordCheckedForPunctuation);
-        //   //above
-        // } else {
-        //   newArr.push(wordCheckedForPunctuation);
-        // }
-
-        // newArr.push(wordCheckedForPunctuation);
-        // console.log(wordCheckedForPunctuation);
-
-
-
-
-
-
