@@ -17,3 +17,4 @@ Assumptions
 3. I am assuming that if there is an ending punctuation mark ('.', ',', ';', ':'), there is nothing immediately after it. 
 4. This list will catch the punctuation marks: ['.', ',', '!', ';', ':', "'", '"', '(', ')', '{', '}', '[', ']'].
 5. No blank spaces after the the last word in a line in the text file.
+6. Node JS is installed on the machine running the code. 
